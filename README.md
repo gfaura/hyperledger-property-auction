@@ -15,7 +15,7 @@ Deploy the test network. Note that we use the `-ca` flag to deploy the network u
 ./network.sh up createChannel -ca
 ```
 
-Deploy the auction smart contract
+Deploy the property auction smart contract
 ```
 ./network.sh deployCC -ccn PropertyAuction -ccp ../propertyauction/chaincode-go/ -ccl go -ccep "OR('Org1MSP.peer','Org2MSP.peer')"
 ```
@@ -23,7 +23,7 @@ Deploy the auction smart contract
 
 ## Install the application dependencies
 
-We will interact with the auction smart contract through a set of Node.js applications. Change into the `application-javascript` directory:
+We will interact with the property auction smart contract through a set of Node.js applications. Change into the `application-javascript` directory:
 ```
 cd ~/fabric-samples/propertyauction/application-javascript
 ```
@@ -96,7 +96,7 @@ The result is the name and issuer of the seller's certificate:
 x509::CN=org1admin,OU=admin,O=Hyperledger,ST=North Carolina,C=US::CN=ca.org1.example.com,O=org1.example.com,L=Durham,ST=North Carolina,C=USn
 ```
 
-## Bid on the auction
+## Bid on the property
 
 We can now use the bidder wallets to submit bids to the auction:
 
