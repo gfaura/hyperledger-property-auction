@@ -127,7 +127,7 @@ The `bid.js` application also prints the bidID:
 
 The BidID acts as the unique identifier for the bid. This ID allows you to query the bid using the `queryBid.js` program and add the bid to the auction. Save the bidID returned by the application as an environment variable in your terminal:
 ```
-export BIDDER1_BID_ID=90c1f2b7e443a486c65a4d5a04ecbc97f114fdb461bda0c05bf44a1490cb264f
+export BIDDER1_BID_ID=e44bbd670978a1c0042d6257b91772ef54a7ce624fabb0d04ab62f7c3bc85c7d
 ```
 This value will be different for each transaction, so you will need to use the value returned in your terminal.
 
@@ -180,7 +180,7 @@ The hash of bid will be added to the list private bids in that have been submitt
 
 ### Bid as bidder2
 
-Let's submit another bid. Bidder2 would like to purchase the painting for 150000 dollars.
+Let's submit another bid. Bidder2 would like to purchase the prperty for 150000 dollars.
 ```
 node bid.js org1 bidder2 PropertyAuction 150000
 ```
@@ -267,7 +267,7 @@ Now that a bid from Org2 has been added to the auction, any updates to the aucti
 
 ### Bid as bidder4
 
-Bidder4 from Org2 would like to purchase the painting for 400000 dollars:
+Bidder4 from Org2 would like to purchase the house for 400000 dollars:
 ```
 node bid.js org2 bidder4 PropertyAuction 400000
 ```
@@ -299,9 +299,9 @@ After the auction is closed, bidders can try to win the auction by revealing the
 3. The hash of the revealed bid matches the hash of the bid on the channel ledger. This confirms that the bid is the same as the bid that is stored in the private data collection.
 4. The hash of the revealed bid matches the hash that was submitted to the auction. This confirms that the bid was not altered after the auction was closed.
 
-Use the `revealBid.js` application to reveal the bid of Bidder1:
+Use the `revealBid.js` application to reveal the bid of Bidder2:
 ```
-node revealBid.js org1 bidder1 PropertyAuction $BIDDER1_BID_ID
+node revealBid.js org1 bidder2 PropertyAuction $BIDDER2_BID_ID
 ```
 
 The full bid details, including the price, are now visible:
@@ -335,7 +335,7 @@ The full bid details, including the price, are now visible:
   "revealedBids": {
     "\u0000bid\u0000PaintingAuction\u00008ef83011a5fb791f75ed008337839426f6b87981519e5d58ef5ada39c3044edd\u0000": {
       "objectType": "bid",
-      "price": 800,
+      "price": 200000,
       "org": "Org1MSP",
       "bidder": "eDUwOTo6Q049YmlkZGVyMSxPVT1jbGllbnQrT1U9b3JnMStPVT1kZXBhcnRtZW50MTo6Q049Y2Eub3JnMS5leGFtcGxlLmNvbSxPPW9yZzEuZXhhbXBsZS5jb20sTD1EdXJoYW0sU1Q9Tm9ydGggQ2Fyb2xpbmEsQz1VUw=="
     }
@@ -351,7 +351,7 @@ Bidder3 from Org2 will also reveal their bid:
 node revealBid.js org2 bidder3 PropertyAuction $BIDDER3_BID_ID
 ```
 
-If the auction ended now, Bidder1 would win. Let's try to end the auction using the seller identity and see what happens.
+If the auction ended now, Bidder3 would win. Let's try to end the auction using the seller identity and see what happens.
 
 ```
 node endAuction.js org1 seller PropertyAuction
@@ -372,7 +372,7 @@ Before we can end the auction, we need to reveal the bid from bidder4.
 node revealBid.js org2 bidder4 PropertyAuction $BIDDER4_BID_ID
 ```
 
-Bidder2 from Org1 would not win the auction in either case. As a result, Bidder2 decides not to reveal their bid.
+Bidder1 from Org1 would not win the auction in either case. As a result, Bidder1 decides not to reveal their bid.
 
 ## End the auction
 
